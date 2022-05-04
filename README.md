@@ -23,7 +23,7 @@ Our main goal is to provide role-playing games that will educate participating s
 We will try to choose and create scenarios that have already happened or are similar to known attacks.
 This can range from smaller personal incidents, such as a phishing attack, or a social engineering attempt, up to large scale attacks, such as the notpetya malware incident.
 
-We want to teache them how to..:
+We want to teach them how to..:
 - ...identify such attacks. 
 - ...how to behave when being attacked.
 - ...how to mitigate the effects of an ongoing attack.
@@ -67,12 +67,11 @@ This is the only agreeable exemption from the non commercial restrictions.
 
 # Courses
 
-Currently we have no course material yet, but to show you how the list will look, we created an example.
-Once the documentation is completed and published, it will link directly to the downloadable artifacts.
+Currently we only have one topic in store for you, our Ransomware game.
 
-| Name        | Target audience   | Topic                                        | Minimal number of players | Time estimate | Version |
-|-------------|-------------------|----------------------------------------------|---------------------------|---------------|---------|
-| Oh my fish! | college and above | Phishing, Fake login pages, credential abuse | 5                         | 60min-120min  | v1.0    |
+| Name                                                                                                       | Target audience   | Topic                    | Number of players | Time estimate | Version |
+|------------------------------------------------------------------------------------------------------------|-------------------|--------------------------|-------------------|---------------|---------|
+| [Ransomware](https://gitlab.ost.ch/marco.zanetti/ba_cyber_security_rpg/-/tree/Publish/Content/Ransomware) | college and above | Phishing, Malware, OSINT | 3-6               | 60min-90min   | v1.0    |
 
 # FAQ
 
