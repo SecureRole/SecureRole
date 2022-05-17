@@ -20,6 +20,11 @@
 # these rules might exclude image files for figures etc.
 #*.ps
 #s*.eps
+*_main.pdf
+main.pdf
+
+## Generated if empty string is given at "Please type another file name for output:"
+?_main.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
@@ -287,3 +292,6 @@ TSWLatexianTemp*
 
 *.mlf*
 *.mtc
+
+out/*
+index.html
