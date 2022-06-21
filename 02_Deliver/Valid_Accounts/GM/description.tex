@@ -1,0 +1,18 @@
+\subsubsection{Valid Accounts}
+
+The attacker has gathered a list of valid accounts from an AOL breach.
+The database dump contains besides personal details also passwords in cleartext.
+
+The attacker tried to use the credentials on different VPN Gateways to get access.
+He was successful with accounts from the company in this game.
+
+After he has access to the internal network of the company, he makes a network scan with NMAP and finds a computer that he can access with the credentials via RDP.
+This allows him to use his tools on that computer without being detected.
+
+The following security measures have failed.
+\begin{itemize}
+    \item No password policies are implemented in the system
+    \item No multi-factor authentication is implemented in the system
+    \item There is no limitation on the amount of time a user can try to log in.
+    \item Detection of unusual login outside of the office hours.
+\end{itemize}

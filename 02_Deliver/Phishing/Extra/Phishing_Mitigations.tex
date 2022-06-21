@@ -1,0 +1,127 @@
+\chapter{Phishing Mitigations}
+\section{Technical}
+
+\subsection{SPF}
+The Sender Policy Framework is a method to detect whether an e-mail was sent from a server that is present on a list. This entry is implemented with the DNS system.
+In this procedure, the recipient is obliged to check, and the sender domain is obliged to create the DNS entry.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/SPF.png}
+    \caption{How SPF works}
+\end{figure}
+
+\subsection{DKIM}
+By signing messages, a recipient can check the authenticity of an e-mail.
+The sending server will create a signature with the private key, which is only known to it, and attach it to the e-mail.
+After the sending server has sent the email to the receiving server, the receiving server will check the signature with the public key.
+This server can read from a DNS entry and check it using a cryptographic algorithm.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/DKIM.png}
+    \caption{How DKIM works}
+\end{figure}
+
+\subsection{BIMI}
+Many companies want to display their logo in their email inbox.
+This is possible with BIMI Brand Indicators for Message Identification.
+SPF and DKIM must be set up beforehand, DMARC must be set to quarantine/reject, you must be able to create a TXT resource record for your domain and you need your logo as an SVG.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/BIMI.png}
+    \caption{How a BIMI enables E-Mail looks}
+\end{figure}
+
+\subsection{DMARC}
+The SPF and DMARC checks mean that SPAM e-mails can be detected.
+However, the recipient must now decide how to handle the received e-mails.
+DMARC Domain-based Message Authentication, Reporting and Conformance has the task of informing the recipient of this.
+For example, the recipient can discard the e-mail and not inform the recipient or send it to the domain e-mail server for reporting.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/DMARC.png}
+    \caption{How DMARC works}
+\end{figure}
+
+
+\subsection{SPAM-Filter}
+A SPAM filter is a computer program or even an SMTP relay for detecting SPAM e-mail.
+The detection of email is possible through various methods, ranging from content scans to AI based systems.
+These filters usually do the following checks on an email
+
+\begin{itemize}
+    \item Checking the sender's email address or URL
+    \item Checking the servers that send, forward or provide the content
+    \item Sorting according to the header
+    \item Sorting based on the text (content filter)
+\end{itemize}
+
+
+\subsection{Anti-Virus}
+A virus scanner for e-mail is a suitable option for checking file attachments for viruses and marking them as SPAM at the same time.
+
+\subsection{Updates}
+Updating software and operating systems can also help to avoid SPAM, as this closes security gaps and makes it more difficult for attackers to access a system.
+
+\subsection{Password Manager}
+A password manager can help store passwords in a safe place. Some password managers recognize the websites for which passwords are stored and can even check for published passwords with the Darknet Scan function.
+
+\section{Personel}
+
+\subsection{Awareness Training}
+Many cyberattacks start with an email as the first entry point.
+Therefore, people who receive a lot of emails need to be trained to recognize phishing.
+One way to do this is to simulate SPAM mail detection on a regular basis.
+In this case, SPAM mails are sent from the company to the employees and then a statistical evaluation is made.
+
+\subsection{Reporting}
+In addition to the simulation with a sample phishing, the employees must also be trained on how to report the SPAM email to the IT department.
+It is especially important that suspicions are reported, as recognizing SPAM emails is usually difficult and depends on the individual.
+
+\subsection{Marketing}
+It is also possible to make employees aware of SPAM through marketing campaigns such as posters or active information events.
+Many also recommend not penalizing people for spotting but rewarding them, which can be financial benefits or even gamification of it.
+As a score, it is also often recommended how many emails are reported in a given period of time.
+
+\subsection{Principles/Policies}
+In a company, it may well be appropriate to lay down rules for dealing with e-mail, whether these are laid down as principles or in writing as rules is at the discretion of the company.
+Here are some examples:
+
+\begin{itemize}
+    \item Don't click on that link
+    \item Don't give your information to an unsecured site
+    \item we will never ask for your password
+    \item our bank details will not change at any point
+    \item Watch out for shortened links
+    \item Beware of pop-ups
+\end{itemize}
+
+
+\subsection{Password Policies}
+Password policies can also help indirectly.
+However, this is only of limited help, because if an employee enters his or her password on a phishing website, no password policy will help.
+\subsection{MFA/2SV}
+Better for authentication are multiple steps, where the users have to perform several steps to log on to the systems. The user can use another authentication method besides his password or even use several methods.
+Here are some examples of authentication methods.
+
+\begin{itemize}
+    \item Biometrics
+    \item Smart cards
+\end{itemize}
+
+\subsection{Response-Plan}
+Many large companies have a response plan for a security incident, which defines the steps to be taken in such a case.
+Therefore, it is also recommended for SMEs to create such an incident response plan, as the steps have already been thought through, and the contact addresses are all available.
+
+\subsection{Inform}
+Regularly informing employees about the current SPAM situation can also help to make them aware.
+Here, care should be taken to ensure that it is not too much and not too little.
+\subsection{Knowledge Base}
+A central website with content of experiences from other staff can help to promote knowledge sharing.
+
+\subsection{Limit presence in OSINT}
+There are SPAM e-mails that are targeted at individual persons, whereby the attacker operates OSINT before sending a SPAM e-mail.
+It can also help that employees do not publish company data on social media or similar platforms.

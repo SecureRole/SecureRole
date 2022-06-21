@@ -1,0 +1,273 @@
+\chapter{Introduction}
+This document will give you an idea about what we mean when we talk about an attack using valid accounts and the possible mitigations for it.
+
+Valid Accounts or compromised accounts are used by adversaries to gain access to a protected network or system by using credentials they obtained from a source.
+
+In \autoref{chapter:validaccounts_sources} you will get an overview of several sources you can find credentials.
+Keep in mind that this list only covers a portion of ways to gather this information and an attack usually consists of a combination of different attack techniques combined.
+
+\chapter{Types}
+The MITRE Att\&ck Framework refers Valid Accounts in the Technique category of Initial Access and findable with technique ID \href{https://attack.mitre.org/techniques/T1078/}{T1078}.
+The framework distinguishes four sub-techniques, that the adversary can use to get access.
+
+\begin{itemize}
+    \item Default Accounts
+    \item Domain Accounts
+    \item Local Accounts
+    \item Cloud Accounts
+\end{itemize}
+
+\section{Default Accounts}
+The installation of new software or device in a system usually requires signing, by using preinstalled credentials to configure.
+If these credentials aren't changed afterwards, a loophole opens in the system through which access can be gained when it's exposed to the Internet.
+This is relatively easy to be misused, they only have to know the default credentials.
+
+\section{Domain Accounts}
+Companies have in most cases a centralized identity and access management system, short for IAM, that manages the credentials.
+By connecting devices and software to an IAM system, it's possible to manage the access control of it in the IAM system and log in with the same credentials.
+
+The following \autoref{fig:aad} is an Azure Active Directory, short AAD, service managed in the Azure Cloud.
+You see, that different system is connected to AAD and manages different aspects of authentication and authorization.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/aad.png}
+    \caption{Azure Active Directory}
+    \label{fig:aad}
+\end{figure}
+
+\section{Local Accounts}
+These types of credentials are used to log in to a system with credentials that are only available on it.
+In comparison to Domain Accounts, it isn't possible to log in to other systems with those credentials.
+
+\section{Cloud Accounts}
+By setting up a cloud infrastructure you also have to create credentials, that allow access to different guides of resources.
+The created credentials are associated with permissions to access, for example, databases or cloud storage resources.
+Depending on what is additionally connected to the cloud IAM system it could allow an adversary access to the on-premise system.
+
+\chapter{Sources}
+\label{chapter:validaccounts_sources}
+From an attacker's perspective, you first need to obtain the credentials.
+It exists different methods to get it and we like to show you a few of them.
+
+\section{Default Credentials - CIRT.net}
+The website CIRT.net has a list of collected default accounts for various vendors.
+On the website \href{https://cirt.net/passwords}{CIRT.net} is a comprehensive list of different vendors.
+
+\section{Default Credentials - SSH Keys on Github}
+Another place is to search on GitHub for credentials, this is because people forget to not include credentials in the git commit.
+By including these credentials in a commit history, an attacker can easily search using the GitHub search feature.
+
+To give you an impression of how to use GitHub to search for credentials, we do a short tutorial by searching for SSH Keys.
+
+Many developers use an SSH Key to access different services such as Linux Servers or even GitHub repositories.
+The following code snippet shows an SSH key generated with the OpenSSH Library.
+The generation process of an asymmetric key pair outputs a private key and a public key.
+As you suggest, the private key has to be kept private and the public key has to be shared with the parties (GitHub).
+We also need the private key to get access to services that are associated with it.
+
+\begin{lstlisting}
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAYEAr7pINQ2m44vE3d4Ajmwu355yiK9ewuYCimpLFtrknu/pxM+rtr0r
+...
+kO1mHNWg5z4QH4Abgl2uSGaBgXjSOogo0ZWrtq4yVV4tDkDCUv4MRwYYkm3gDz6Znp2obo
+BtAQqnizl+1GkAAAAQaXNhYWNAQ1JZUFRPTEFORAECAw==
+-----END OPENSSH PRIVATE KEY-----
+\end{lstlisting}
+
+The private key usually begins with \enquote{-----BEGIN OPENSSH PRIVATE KEY-----} or \enquote{-----BEGIN RSA PRIVATE KEY-----}, depending on the library used.
+With a simple search on GitHub, you find real SSH Keys in commits, comments, or repositories.
+
+There is for example a commit with the comment "Delete -----BEGIN OPENSSH PRIVATE KEY-----", but the Private Key is still present in the commit.
+Can you spot it?
+
+
+Its possible to automate the process on finding such keys, take a look at this \href{https://book.hacktricks.xyz/generic-methodologies-and-resources/external-recon-methodology/github-leaked-secrets}{site}.
+
+\section{Mimikatz}
+Mimikatz is one of the most commonly used tools to obtain credentials from an infected Windows system.
+One critical part of the windows system is the \lstinline{lsass.exe} process that has to do authentication and therefore needs credentials for its job.
+Here comes Mimikatz into it and dumps the memory of this process and carves out the credentials from it.
+
+As you can see in the screenshot, 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/mimikatz.png}
+    \caption{mimikatz}
+    \label{fig:mimikatz}
+\end{figure}
+
+The tool is available on \href{https://github.com/gentilkiwi/mimikatz}{GitHub}. 
+
+\section{Shoulder surfing}
+Shoulder surfing is not only about looking over the shoulder of the target.
+It can be performed from the close range or the long range.
+The usage of field glasses can be used to capture the credentials from a wide range, without being noticed.
+A hidden camera can also be used to capture it, cameras are nowadays little devices that are easy to install.
+
+Creditcard thefts use hidden cameras to get details, by installing additional hardware on the ATMs.
+The \autoref{fig:atm} shows a little camera installed on the card slot.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/atmcamera.png}
+    \caption{ATM Camera}
+    \label{fig:atm}
+\end{figure}
+
+\section{Brute Force}
+Trying out password combinations is easy to perform, but in reality it usually takes a long time to get it right.
+The process can be made more efficient by automating it.
+For example, an attacker uses a brute-force tool to make many requests to a website, that isn't probably secured to prevent such attacks, or a list with password hashes is brute-forced with Hashcat.
+
+%TODO Add picture
+
+\section{Credentials Stuffing}
+According to a study from \href{https://services.google.com/fh/files/blogs/google_security_infographic.pdf}{Google}, 53\% are using the same password for multiple accounts on different services.
+In the context of cybersecurity, it means that it is possible to use a breached password and test it against other services.
+
+An attacker is collecting data from different sources to create a list of credentials, containing usernames and passwords.
+The attacker then uses the created database to get access to other services, because the human being tends to reuse passwords.
+If he has success in trying it, it's possible to misuse it.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/credential-stuffing.png}
+    \caption{Credentials Stuffing}
+    \label{fig:credentialstuffing}
+\end{figure}
+
+\chapter{Mitigations}
+Different mitigations can protect against valid accounts being misused.
+The MITRE Att\&ck Framework has different techniques and techniques for mitigations against it.
+For the valid accounts, they list these five mitigations for it.
+
+\begin{itemize}
+    \item Password Policies 
+    \item Multi-factor Authentication 
+    \item Privileged Account Management 
+    \item User Training 
+    \item User Account Management 
+\end{itemize}
+
+This list includes some, handy mitigations but there are also additional ones that can help to protect against it.
+We added some.
+
+\section{Password Policies}
+Making sure a password follows a set of rules, can reduce the risk of password reused and its complexity of it.
+Besides applying those password policies you also have to make sure, to enforce them on the different systems.
+
+An active directory can set some rules for password policies, as you see in the \autoref{fig:adpasswordpolicy}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/passwordpolicy.png}
+    \caption{Password Policy}
+    \label{fig:adpasswordpolicy}
+\end{figure}
+
+\section{Multi-factor Authentication} 
+
+
+\section{Privileged Account Management} 
+Employees of the IT department usually use two accounts for their work, depending on the task they are using a regular account or a privileged one.
+These privileged accounts may also be a service account that has special access or privileged access to systems.
+
+The part of auditing and making sure the privileged accounts are used correctly used and not abused.
+Monitoring and controlling accounts have to be done regularly.
+This ensures that trusted individuals do not abuse their privileges and that privileges are revoked when they are no longer needed.
+
+\textit{What are its advantages of it?}
+\begin{itemize}
+    \item Grant privileges to users only for the systems they are authorized to access.
+    \item Grant access only when it's needed and revoke access as soon as the need expires.
+    \item Eliminate local/direct system passwords for privileged users.
+    \item Centrally manage access over a disparate set of heterogeneous systems.
+    \item Create an unalterable audit trail for any privileged operation.
+\end{itemize}
+
+\section{User Training}
+Technically, a system can be made secure, but it's so secure as it is used by the users.
+Ensuring the implements are used appropriately, making sure the users are aware of their actions, and taking security seriously.
+
+Training end-users is a hard task, but it can be done with appropriately designed training material.
+Training should consist of the following topics.
+\begin{itemize}
+    \item Phishing and social engineering
+    \item Access, passwords, and connection
+    \item Device security
+    \item Physical security
+\end{itemize}
+
+\section{User Account Management}
+We start with an example.
+Employees start on a given day and their employment ends on a given day.
+The IT department has therefore to create accounts, set the right permissions, and make sure it is correctly used by the new user.
+Probably the employee needs more permission because the field he works in is changing.
+At the end of employment, an account is disabled or completely remove from the system.
+
+The example above, shows that users are usually gaining more permissions to the system and if we take the example to a hundred or thousand users the IT department has to make sure the "added" permissions are still in use.
+Therefore, it is recommended to regularly check the accounts to make sure that they are not still in use or inactive.
+
+You also have to make sure, that users can't create additional accounts and can not modify permissions of systems.
+The IT department has to have control over it
+
+
+\section{CAPTCHA}
+The abbreviation stands for \endquote{Completely Automated Public Turing test to tell Computers and Humans Aparts}.
+As the acronym suggests, it is intended to tell a computer whether a visitor is a bot or a human.
+This should help to control bot activity and from a security perspective for example defend against DDoS Attacks or even Brute-Force attempts.
+The user has to identify numbers and letters, which are displayed on a website as shown in \autoref{fig:captcha}.
+Over time, machines have learned to interpret these images and are now able to identify the characters as well.
+That is why reCAPTCHA was introduced by Google.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/captcha.png}
+    \caption{Captcha}
+    \label{fig:captcha}
+\end{figure}
+
+The new reCAPTCHA has a different method to identify bots.
+For example, a new approach is to make a traditional CAPTCHA test with recognition for characters, but with the difference, the pictures are gathered from real texts.
+
+Other methods are:
+\begin{itemize}
+    \item Checkboxes
+    \item General user behaviour
+    \item Image recognition
+\end{itemize}
+
+\chapter{Questions}
+\begin{question}[Question]
+    What is the difference between a Domain Account and a Local Account?
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+\begin{question}[Question]
+    What are entry points to a system with\dots?
+    \begin{itemize}
+        \item a Default Accounts
+        \item a Domain Accounts
+        \item a Local Accounts
+        \item a Cloud Accounts
+    \end{itemize}
+\end{question}
+\begin{question}[Answer]
+    \vspace{6cm}
+\end{question}
+
+\begin{question}[Question]
+    Some password lists are publicly available on the internet.
+    Your event can find them on GitHub for example, the famous \href{https://github.com/brannondorsey/naive-hashcat/releases/tag/data}{rockyou.txt} list has a lot of passwords.
+
+    And there are services like \href{https://haveibeenpwned.com/Passwords}{Have I Been Pwned} that provide aggregated lists of passwords for you and test if they are compromised.
+
+    What do you think how many times does the password \lstinline{12345678} appear?
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}

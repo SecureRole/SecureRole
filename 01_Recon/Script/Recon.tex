@@ -1,0 +1,121 @@
+\chapter{Reconnaissance attacks}
+A reconnaissance attack is where the attacker tries to gather all the possible information about the victim before beginning the attack. So, a reconnaissance attack is used as preparation for the actual attack. \\
+There are two different types of reconnaissance attacks.
+\begin{itemize}
+    \item \textbf{Active reconnaissance} is the type of attack where the attacker engages directly with the system to gather more information about it. He might use automated scanning or also manual testing with various tools like netcat, traceroute and ping. \\ In this type of attack, the attacker has to interact with the system directly. This means that the information is more accurate and can be obtained faster. However, the probability of being detected by a firewall or an intrusion detection system is higher.
+    \item \textbf{Passive reconnaissance} is an attempt to gather more information about a system without interacting with it directly. \\ Different tools like Wireshark or Shodan can be used to carry on this attack. In this attack, more time is needed to obtain the information, but there is a lower probability of being detected.
+\end{itemize}
+\newpage
+\section{Open-source intelligence - OSINT}
+The first step in an attack is to gather information about the target of the attack without alerting them. \\
+\textbf{Open-source intelligence} is a method of collecting and gathering information about individuals, organizations, and other entities that are publicly available. 
+An attacking plan is then developed with the information gathered.\\
+Publicly available information is information that can be found on the Internet, but also information in books and newspapers.
+ Information includes not only text-based information but also videos, images, and conferences.
+
+\subsection{OSINT Framework}
+Gathering all this information can be very time-consuming, which is why various tools have been created to facilitate the entire process. \\
+A framework, called \href{https://osintframework.com}{OSINT Framework} has been created, which contains a collection of OSINT tools.
+All tools can be filtered by different categories, topics, and goals. An OSINT tree was created to provide an overview of the classification of the tools.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.73\textwidth]{./images/osint.png}
+    \caption{OSINT Framework}
+    \label{fig:osint}
+\end{figure}
+
+Other tools that can also be used for intelligent information gathering, are web search engines such as Google, Bing, Yahoo, and others. \\
+OSINT can also be used by the organizations themselves so that they can check what information is publicly available to the attackers. This could help the organization plan a strategy for how to defend itself in the event of attacks when intelligent information is affected.\\
+\\There are some basic steps that need to be followed when applying OSINT:
+\begin{itemize}
+    \item Note the information you already know
+    \item Determine what information is being sought
+    \item Collect the data
+    \item Analyze the data collected
+    \item Create a report
+\end{itemize}
+
+\newpage
+\section{Active scanning}
+Attackers can also perform scans to gather more information about the target.
+ Other forms of reconnaissance do not involve direct interaction with the system, while actthe attacker directly scans the victim's system to gather the needed information.
+ Depending on the information being sought different types of active scanning can be performed:
+ \begin{itemize}
+     \item Scanning IP blocks
+     \item Vulnerability Scanning
+     \item Wordlist Scanning
+ \end{itemize}
+
+ \subsection{Scanning IP blocks}
+ The attackers can scan the victims' IP blocks to gather more information that can be used during the attack. 
+ This scan provides the attacker with detailed information about which IP addresses are being used, as well as detailed information about the hosts assigned to those IP addresses.
+
+ \subsubsection{Detection}
+ Network traffic should be monitored so that unusual data or processes can be detected.
+
+ \subsection{Vulnerability Scanning}
+ The attackers scan the victim's system for vulnerabilities that can be exploited during the attack. \\
+ Vulnerability scanning attempts to identify the weaknesses and flaws in an operating system and the software running on it. Vulnerability scanning is when attackers try to gather information about the version of the software running on the system, listening ports, and other network information. \\
+ This scanning can also be done by the organization itself to determine the vulnerabilities of their system and take the proper measures to protect their organization from attacks.
+
+
+ \subsection{Wordlist Scanning}
+ Attackers attempt to identify the contents of files and folders by scanning the infrastructure using wordlists. \\
+ There are \textbf{generic wordlists} that contain the most commonly used names and file extensions that are used during scanning. \\
+ On the other hand, there are \textbf{custom wordlists} that are created by the attackers based on data they have collected during other reconnaissance techniques. \\
+Several tools can be used when scanning word lists, such as Dirb, Dirbuster and GoBuster.
+\textbf{example}
+
+Imagine an organisation that has a customer portal hosted on the on-premise infrastructure and maintained by the organisation itself.
+The configuration is stored on a file called config.json on the root directory of the web server, including key material for en-/decryption and generating tokens for the web server session (authentication).
+
+A tool like Dirbuster, would iterate the wordlist and check if the configuration file is reachable over HTTP. 
+Dirbuster would simply call for https://example.com/config.json and the web server returns the content of if, because of a misconfiguration.
+\subsubsection{Prevention}
+Only allow access to any resources that are required to be available
+
+\newpage
+\section{Phishing for information}
+Phishing for information is a technique that tries to trick victims into revealing important information and also their credentials. \\
+Phishing for information differs from phishing because the goal here is to get information from the victim rather than to execute a malicious code. \\
+\\There are three different subtechniques to this attack:
+\begin{itemize}
+    \item \textbf{Spearphishing Service}: 
+    In this case, the attackers send messages through various services such as social media platforms, but also personal emails. 
+    They try to use services that do not have very strict security policies so that it is easier to get the needed information from the victim. 
+    The attackers can also create social media accounts and send messages directly to the victims pretending to be someone else to attract their attention and steal information.  
+    \item \textbf{Spearphishing Attachment}: Attackers attach a file to the email and send it to the victim. 
+    He tries to convince the victim with the email, that the file needs to be filled out with information.
+    All the information filled in by the victim is sent back to the attacker.
+    \item \textbf{Spearphishing Link}: In this case, a spear phishing email contains a link that redirects the victim to a malicious website. This website may look very similar to a legitimate website, but if you look closely, it has a different URL than the real website. 
+    Through this website, the attacker tries to trick the victim into entering their personal data and credentials, which are then collected and sent back to the attacker.
+\end{itemize}
+
+\subsection{Mitigations}
+\begin{itemize}
+    \item Use email authentication mechanisms to detect and filter emails: SPF, DKIM, and DMARC.
+    \item Train users  to identify phishing attempts.
+\end{itemize}
+
+\newpage
+\chapter{Questions}
+\begin{question}[Question]
+    In which use case would wordlist scanning be helpful?
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\begin{question}[Question]
+    Explain the difference between phishing and phishing for information.
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\begin{question}[Question]
+   Is it possible to prevent OSINT? If yes, how? If no, why not?
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}

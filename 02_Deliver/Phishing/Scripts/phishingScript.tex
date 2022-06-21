@@ -1,0 +1,332 @@
+\chapter{Phishing as a Threat}
+In the digital world, where most of our activities take place online, it is not uncommon to have online cyberattacks. 
+The attackers’ main goal is to steal users’ credentials, which are later used to gain access to accounts, resulting in identity theft and other losses, such as financial losses when credit card information is stolen. \\
+The most dangerous, successful and at the same time the simplest attack is phishing, as many cyberattacks start with a phishing email. 
+Usually, users are tricked into disclosing their usernames, passwords and other personal information. 
+The attackers forge the email address to make it appear to be from someone else, create fake websites that look like the ones which the user already uses and trusts, and change the URL with foreign character sets. 
+When phishing, the attacker may also aim to infect the user's computer with ransomware by making him download a file sent as attachments to the email or even Microsoft Word documents with malicious code embedded. 
+It takes only one false click on the phishing email for the whole network to be compromised and personal data to be stolen. 
+\\
+\\ The term phishing is used for a category of attacks consisting of spear-phishing, smishing, vishing, and whaling attacks. Below you can find an explanation of the different categories of phishing.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/phishing.jpg}
+    \caption{Phishing attack} 
+\end{figure}
+
+\section{Spear Phishing}
+Normal phishing uses a technique known as spray-and-pray. 
+It involves sending emails to as many people as possible in an organisation in the hope that one of them will fall for the email and the attacker will gain access.\\ 
+\textbf{Spear phishing} is when the attacker targets a specific person or organization. 
+First, the attackers decide what data they want to access. 
+Then they check who has access to this data and create a phishing email specifically targeting them with the aim of stealing their credentials and private information. 
+The attackers try to obtain as much information as possible about the victim beforehand, so that the emails and attachments look more reputable and credible. 
+This way, the chance of deceiving the victim is also higher. 
+The information gathered about the victim is usually accessible online, e.g. on social media. 
+LinkedIn can be a very useful resource in this step, providing the attacker with more information about the person they are targeting. \\
+\\ If the attack is successful and the victim provides passwords, PINs, and access codes, the attacker can use this information to steal the victim's identity and access their accounts or even create a new identity with this information.
+
+There are different types of spear phishing attacks that can occur:
+
+\subsection{CEO Fraud}
+CEO Fraud is an attack in which the attacker impersonates the company's CEO. 
+The attack can be carried out in two different ways:  
+\begin{itemize}
+    \item The attackers use the name of the CEO and a different address to trick the victim.
+    \item The attackers use an email address with a domain similar to the company's, but with some different letters, hoping that the victim will not notice.
+\end{itemize}
+This type of attack is very dangerous because a large amount of sensitive information can be obtained if the attacker successfully impersonates the company's CEO.
+
+\section{Smishing}
+Smishing is a type of phishing that uses short messaging services (SMS) to obtain personal and sensitive information. 
+The SMS is sent to the victim and is worded so that the victim takes immediate action. 
+Example: an SMS is sent to the user that he has won a certain amount of money and that he should enter his personal data via a certain link in order to receive the money, or that a certain account of the user has been compromised and that the account will be lost if he does not act immediately.\\
+The attackers can get the phone number from data breaches on the internet. 
+Or the phone number could be entered directly by the user in a phishing email or on a fake website.
+
+
+\section{Whaling}
+The whaling attack is very similar to spear-phishing attacks.
+In the whaling attack, key or important individuals within an organization are targeted. 
+In this case, the phishing emails look much more personalized to the person, making them look more credible. 
+There are also cases where the emails contain company logos and links to non-legitimate websites that look genuine. 
+Since people in higher positions are targeted here, the attackers invest extra time and effort to make the attack more credible and successful. 
+A whaling attack is also known as CEO fraud. \\
+Spear phishing and whale attacks use emails and non-legitimate websites to obtain personal information from users, while smishing and vishing are attacks that use users’ phone numbers to obtain their personal information. \\
+
+\section{Vishing}
+Vishing is a combination of the terms “voice” and “phishing”. 
+In this case, phone calls are used by the attackers to obtain personal information from the victim. 
+Example: the attacker calls the victim on the weekend or during non-working hours, pretends to be one of the companies whose services the victim uses, and asks the user for more personal and sensitive information. \\
+
+
+\section{Clone Phishing}
+Clone phishing is another technique that is a bit different from the phishing types mentioned above. 
+A legitimate email with links and attachments is used, but links and attachments are replaced with malware or ransomware.  \\
+The email looks like it comes from a legitimate email sender and is the most difficult phishing email to detect.
+
+\section{Social Media Phishing}
+Social media phishing is the type of attack which gets executed with the help of social media. 
+The attacks are usually carried out via a message or a link sent to you asking you to confirm the credentials. 
+This way, the account could be hacked, and the attacker could impersonate you and send phishing messages to your connections/friends or followers on your social media.
+Also, the attacker could send an email that looks like it comes from the social media platform asking you to confirm the credentials, and in this way the credentials can be stolen as well.
+
+\chapter{Phishing Mitigations}
+
+When a phishing attack occurs, there are a number of steps that can be taken to mitigate the attack. These steps can be taken either by the enterprise with a technical implementation of a mitigation or by the users.
+
+\section{Technical}
+
+\subsection{Sender Policy Framework - SPF}
+Attackers would want to use trusted domains on the internet to send phishing emails. Therefore, companies should protect their domains and prevent others from using their domain. \\
+Sender Policy Framework (SPF) is a protocol used by domain owners to determine which email servers can emails be sent from. Think of SPF records as a list of SMTP servers that are allowed to use and send emails from your domain. 
+If a domain does not have an SPF record, the email may be marked as spam. 
+So, setting up SPF protects your domain from sending phishing emails on your behalf. \\
+\\
+Every time an email is sent or received, the recipient is required to check in the SPF records where the email came from, and the sender domain is also required to create a DNS record.
+If no match is found in the record, the email should be treated as fake because it was not sent from a server within that domain. 
+SPF records are published in your DNS by the DNS manager. \\
+An example of SPF record: \\
+\begin{center}
+    \code{v=spf1 ip4:228.51.119.99 ip6:d5a5::2b7f -all}
+\end{center}
+
+\begin{itemize}
+    \item \code{v=spf1}:  Each SPF record begins with the definition of current version of SPF.
+    \item After the version parameter, all IP addresses that are allowed to send emails on behalf of the domain. 
+    In the example above the \code{ip4:228.51.119.99} and \code{ip6:d5a5::2b7f} listed as trusted IP addresses.
+    \item \code{-all}: This parameter should be at the end and states that any of the IP addresses not listed in the record are not authorized to send email.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/SPF.png}
+    \caption{How SPF works}
+\end{figure}
+
+
+\subsection{DomainKeys Identified Mail - DKIM}
+DKIM is a technique that signs emails and ensures the recipient that the email received is from the correct sender and that the content of the email has not been altered in transit.
+By signing messages, a recipient can check the authenticity of an email. \\
+\\Two keys are created. One private key is stored on the sending SMTP server and the other key is a public key stored in the DNS zone. 
+When the email is sent by the sender, it is signed with the sender's private key and a DKIM signature header is added to the email.  \\ 
+The signature and email can be validated from the destination SMTP server using the public key stored on the DNS zone which is publicly accessible to the recipient.
+If the two values match, the message is proved to not be fake and is unaltered.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/DKIM.png}
+    \caption{How DKIM works}
+\end{figure}
+
+\subsection{Domain-based Message Authentication Reporting and Conformance - DMARC}
+DMARC is a protocol that uses both SPF and DKIM to determine the authenticity of an email. It helps you add another layer of security over SPF and DKIM. \\
+\\ It is a simple record published in your DNS zone that allows the domain owner to decide how to handle an email that has failed SPF and DKIM checks. 
+They can choose to quarantine the email sent on behalf of their domain, reject it, or report it as well. \\
+DMARC allows the domain owner to get information about the domain's activities when someone from outside uses the domain.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/DMARC.png}
+    \caption{How DMARC works}
+\end{figure}
+
+
+\subsection{Brand Indicators for Message Identification - BIMI}
+BIMI is a standard which attaches the logo of the company to every email sent by the company. When the SMTP servers receive the email and authenticate it, they also check the logo. \\
+Before implementing BIMI, however, there are some prerequisites:
+\begin{itemize}
+    \item SPF and DKIM must be set up beforehand
+    \item DMARC must also be set to quarantine or reject the messages
+    \item Creation of a TXT resource record for the domain must be enabled
+    \item Logo is needed in SVG format
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./images/BIMI.png}
+    \caption{How a BIMI enabled email looks}
+\end{figure}
+
+\newpage
+
+\subsection{SPAM-Filter}
+A SPAM filter is a computer program or even an SMTP relay for detecting SPAM email.
+The detection of email is possible through various methods, ranging from content scans to AI-based systems.
+These filters usually do the following checks on an email:
+
+\begin{itemize}
+    \item \textbf{Content Filters} analyze the content of an email and decide whether it is spam or not. If the email offers deals, discounts or promotions, it is usually marked as spam.
+    \item \textbf{Blacklist Filters} emails coming from certain senders are blocked. Blacklist filters are updated regularly, as senders can change their email address and get a new one.
+    \item \textbf{Header Filters} check the headers to see if the email is coming from an illegitimate sender.
+    \item \textbf{Language Filters} check if the language of the email is different from the one the user is fluent in.
+    \item \textbf{Rule-based Filters} can be used to set certain rules that can be applied to all incoming emails. An example would be to search for specific words in the content of an email.
+    \item \textbf{Bayesian Filters} observes which emails the user marks as spam and then sets the rules accordingly.
+\end{itemize}
+
+
+\subsection{Anti-Virus}
+A virus scanner for email is a suitable option for checking file attachments for viruses and marking them as SPAM at the same time. An antivirus software can block emails that come from suspicious senders or contain phrases that are common in phishing attacks.
+
+\subsection{Updates}
+Updating software and operating systems can also help to avoid SPAM, as this closes security gaps and makes it more difficult for attackers to access a system.
+
+\subsection{Password Manager}
+Password managers only fill in the passwords to the exact URLs stored correctly and cannot be fooled by similarly written website URLs. \\ 
+A password manager can help store passwords in a safe place. Since password managers keep track of the URLs visited, they recognize the websites for which passwords are stored and can even check for published passwords with the Darknet Scan function.
+
+\section{Personnel}
+Since employees are considered a company's greatest vulnerability, some measures can be taken to prevent phishing or detect it when it happens.
+
+\subsection{Awareness Training}
+Many cyberattacks start with an email as the first entry point.
+Therefore, people who receive a lot of emails need to be trained to recognize phishing.
+One way to do this is to simulate SPAM mail detection on a regular basis.
+In this case, SPAM mails are sent by the company to employees and then a statistical evaluation is performed.
+
+\subsection{Reporting}
+In addition to the simulation with a sample phishing, the employees must also be trained on how to report the SPAM email to the IT department.
+It is essential that suspicious emails are reported, as recognizing SPAM emails is usually tricky and depends on the individual.
+
+\subsection{Marketing}
+Making employees aware of SPAM through marketing campaigns such as posters or active information events.
+Many also recommend not penalizing people for spotting but rewarding them, which can be financial benefits or even gamification of it.
+As a score, it is also often recommended how many emails are reported in a given period.
+
+\subsection{Principles/Policies}
+In a company, it may well be appropriate to lay down rules for dealing with emails, whether these are laid down as principles or in writing as rules are at the discretion of the company.
+Here are some examples:
+
+\begin{itemize}
+    \item Do not click on unknown links
+    \item Do not give your credentials to an unsecured site
+    \item Double-check the URL of the website before giving your credentials
+    \item Password is never asked from the company
+    \item Bank details will not change at any point
+    \item Watch out for shortened links
+    \item Be aware of pop-ups
+\end{itemize}
+
+
+\subsection{Password Policies}
+Password policies can also help indirectly.
+However, this is only of limited help, because if an employee enters their password on a phishing website, no password policy will help.
+\subsection{MFA/2SV}
+Better for authentication are multiple steps, where the users have to perform several steps to log on to the systems. The user can use another authentication method besides his password or even use several methods.
+Here are some examples of authentication methods.
+
+\begin{itemize}
+    \item Biometrics
+    \item Smart cards
+\end{itemize}
+
+\subsection{Response-Plan}
+Many large companies have a response plan for a security incident, which defines the steps to be taken in such a case.
+Therefore, it is also recommended for SMEs to create such an incident response plan, as the steps have already been thought through, and the contact addresses are all available.
+
+\subsection{Inform}
+Regularly informing employees about the current SPAM situation can also help to make them aware.
+Here, care should be taken to ensure that it is not too much and not too little.
+
+\subsection{Knowledge Base}
+A central website with content of experiences from other staff can help to promote knowledge sharing.
+
+\subsection{Limit presence in OSINT}
+There are SPAM emails that are targeted at individual persons, whereby the attacker operates OSINT before sending a SPAM email.
+It can also help that employees do not publish company data on social media or similar platforms.
+
+\chapter{Phishing detection}
+Now that you have learned what phishing is and how to mitigate it, we would like to give you some tips on how to recognise a phishing email and prevent your company from being attacked.
+\begin{enumerate}
+    \item Double-check the name of the sender. Check the domain name if it has spelling alterations.
+    \item Look for spelling or grammatical errors. It is possible that the message of a phishing email may contain them.
+    \item If email contains words like \enquote{URGENT, Please react immediately}, then there is a high probability that it is a phishing email.
+    \item Hover over links attached on the email. If no alt text is displayed, then do not click it.
+    \item Hover over attachments to see if a link is displayed or not. If you do not trust the sender, do not click on the attachment and do not download it.
+    \item Delete any suspicious emails before opening it. \\
+\end{enumerate}
+
+\subsection{After clicking on a phishing email\dots}
+\begin{itemize}
+    \item If you suspect an email is a phishing email, do not open it.
+    \item Report the suspicious email to the IT department.
+    \item If you have accidentally opened the email and clicked on any of the links or attachments, please report it to the IT department as soon as possible so that the damage can be minimised.
+\end{itemize}
+
+\chapter{Questions}
+After reading the script and getting a better understanding on the topic of Phishing, you can test your knowledge by answering the 
+ questions below. All questions can be answered by reading this document, no additional reading of the source material or the mentioned additional material is necessary (but highly recommended).
+
+\begin{question}[Question]
+    Explain the difference between whaling attacks and spear phishing attacks. 
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\begin{question}[Question]
+    Write an SPF record where you define that only the IP address 41.215.178.50 is allowed to send emails on your behalf.
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\begin{question}[Question]
+    Which are the three main steps that are taken if DMARC is triggered?
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\begin{question}[Question]
+    How are password managers helpful for phishing email detection?
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\newpage
+\begin{question}[Question]
+    Is the email on \autoref{img:phishing_example1} below a phishing email? Explain why or why not.
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\begin{figure}[h!p]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/phishing-example1.png}
+    \caption{Email example 1}
+    \label{img:phishing_example1}
+\end{figure}
+
+\newpage
+\begin{question}[Question]
+    Is the email on \autoref{img:phishing_example2} below a phishing email? Explain why or why not.
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\begin{figure}[h!p]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/phishing-example2.png}
+    \caption{Email example 2}
+    \label{img:phishing_example2}
+\end{figure}
+
+\newpage
+\begin{question}[Question]
+    Is the email on \autoref{img:phishing_example3} below a phishing email? Explain why or why not.
+\end{question}
+\begin{question}[Answer]
+    \vspace{3cm}
+\end{question}
+
+\begin{figure}[h!p]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/phishing-example3.jpg}
+    \caption{Email example 3}
+    \label{img:phishing_example3}
+\end{figure}
