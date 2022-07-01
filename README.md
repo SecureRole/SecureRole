@@ -10,6 +10,7 @@ If you already know who we are and what we do (or you don't really want to know)
 
 - [Collaborators](#collaborators)
 - [Legal](#legal)
+- [Setup](#setup)
 - [SecureRole Flavors](#securerole-flavors)
 - [Content](#content-table)
 - [FAQ](#faq)
@@ -20,7 +21,8 @@ For the purpose of this pursuit, we have created a variety of different courses,
 ## Who are we?
 
 We are Anina Bytyçi, Isaac Würth and Marco Zanetti.
-Three bachelor students at OST - Ostschweizer Fachhochschule, currently writing our bachelor thesis. We are all studing information technology, with a special focus on cyber security.
+Three bachelor students at OST - Ostschweizer Fachhochschule, currently writing our bachelor thesis.
+We are all studying information technology, with a special focus on cyber security.
 
 ## Why are we doing this?
 
@@ -75,6 +77,45 @@ Amazing!
 
 This material may be used freely by public schools for educational purposes.
 This is the only agreeable exemption from the non commercial restrictions.
+
+# Setup 
+
+This section will tell you how to use our content so you can get the most out of it!
+
+We offer a variety of content which can be used for different aspects of your course, or self learning experience.
+
+## Teachers
+
+The "classical" learning experience at our college is split up into three parts:
+- Lecture presented by the teacher
+- Exercise sessions about similar topics
+- A self-study by the students to solidify knowledge
+
+So our course material is also structured similarly, to achieve the same results.
+We strongly suggest proceeding similarly as outlined below, for the optimal learning experience for your students:
+- Hold a lecture about the topic (With the slides provided by us or your slides)
+- Let students interact in the role-playing game during an exercise session (You can prepare for this game by reading the GM file, it contains a specific chapter on how to set it up for your students)
+- Tell them to download the scripts for the topics so the students can read them in self-study
+- The scripts tell them to see the additional content files 
+
+You can also skip the lecture and self-study part, should your students already be quite familiar with the topics used in the role-playing game.
+Or you can use the slides and scripts without ever playing the role-playing games (even though we advise against it, since the role-playing games are the core of SecureRole).
+
+The role-playing games are separated into different pre-fabricated scenarios.
+Sadly, we do not have any automated generator yet, which would allow you to create (but this feature is in planning).
+
+## Self-learners
+
+If you want to work through the content all on your own (without the role-playing games), we suggest you follow this approach:
+- Read the scripts regarding the topics that excite you
+- Try to answer the questions
+- Check out any additional content which we have curated
+
+## Ready to go!
+
+Great!
+Now you should be prepared to use our content as intended!
+If you have any questions, feel free to contact us: [secure_role@outlook.com](mailto:secure_role@outlook.com)
 
 # Content
 
